@@ -1,0 +1,176 @@
+#include<iostream>
+using namespace std;
+ class Circular_Queue
+ {
+   private:
+   	int front;
+   	int rear;
+   	int arr[5];
+   	int itemCount;
+   	
+   	public:
+   		
+   		//constructor
+   		Circular_Queue()
+   		{
+   			itemCount=0;
+	   		front =-1;
+			rear= -1;
+		for(int i=0;i<5;i++)
+			{
+			 arr[i]=0;	
+			}	
+		}
+		//empty function
+		bool isEmpty()
+		{
+			if(front==-1 && rear==-1)
+			  return true;
+			else
+			  false;
+		}
+		// full function
+		bool isFull()
+		{
+			if((rear+1)%5==front)  //change....... modulas function 
+			  return true;
+			else
+			  return false;
+		}
+		 // Enqueue function
+		void Enqueue(int val)
+		{
+			if(isFull())
+			{
+				cout<<"Queue is Full ";
+				return;
+			}
+			else if(isEmpty())
+			{
+				rear=0;
+				front=0;
+				arr[rear]=val;
+				itemCount++;
+			}
+			else
+			{
+			rear = (rear+1)%5;
+			arr[rear]=val; 	
+			}
+			itemCount++;
+		}
+		// Dequue function
+		int Dequeue()
+		{
+			int x=0;
+			if(isEmpty())
+			{
+				cout<<"Queue is Empty"<<endl;
+				return 0;
+			}
+			else if(front==rear)
+			{
+				x=arr[rear];
+                ///////////
+				rear=-1;
+				front = -1;
+				itemCount--;
+				return x;
+			}
+			else
+			{
+				cout<<"Front Value : "<<front<<endl;
+				x= arr[front];
+				arr[front]=0;
+				front  =(front+1)%5;
+				itemCount--;
+				return x;
+				
+			}
+		}
+		int count()
+		{
+			return 	(itemCount);
+		}
+			void display()
+  			{
+  			cout<<"All values in the Queue are :"<<endl;
+			  for(int i=0;i<5;i++)
+			  {
+			        cout<<arr[i]<<" "<<endl;
+			  }	
+			  
+			}
+   	
+ };
+ 
+ // main function 
+ int main()
+ { 
+	 Circular_Queue q1;
+	 int option;
+	 int value;
+ 	do
+ 	{
+ 		cout<<"-----------Start--------------"<<endl;
+  	cout<<"What operation you want to perform ?"<<endl <<"Select  an Option"<<endl;//<<"Enter 0 to Exit"<<endl;
+  	cout<<"1.Endqueue()"<<endl;
+  	cout<<"2.Dequeue()()"<<endl;
+  	cout<<"3.isEmpty()"<<endl;
+  	cout<<"4.isFull()"<<endl;
+  	cout<<"5.count()"<<endl;
+  	cout<<"6.dispaly()"<<endl;
+  	cout<<"7.Clear Screen"<<endl;
+  	cout<<"0.Exit"<<endl;
+  	cout<<"------------------------process Repeat--------------"<<endl;
+  	
+  	cin>>option;
+  	switch(option)
+  	{
+  		
+  		case 1:
+  			cout<<"Enqueue Operation  \nEnter an item  to Enqueue in the Queue"<<endl;  //Enqueue
+  			cin>>value;
+  			q1.Enqueue(value);
+  			break;
+  		case 2: // Dequeu function
+  			cout<<"Dequeu Operation Called : \nDequeue Value : "<<q1.Dequeue()<<endl; 
+  			break;
+  		case 3:  //empty function
+  			if(q1.isEmpty())
+  			{
+  			cout<<"Your Queue is Empty"<<endl;	
+			}
+			else
+			{
+				cout<<"Queue  is not Empty"<<endl;
+			}
+  			break;
+  		case 4:  //full function
+  			if(q1.isFull())
+  			{
+  			cout<<"Queue is Full"<<endl;	
+			}
+			else
+			{
+				cout<<"Queue is not   Full"<<endl;
+			}
+  			break; // count function 
+  		case 5:
+  			cout<<"Count Operation Called \nCount of item in Queue is :"<<q1.count()<<endl;
+  			break;
+  		case 6: // dispaly function  
+  			cout<<"Display Function Called ";
+  			q1.display();
+  			break;
+  		case 7:
+  			system("cls");
+  			break;
+  		default :
+  		    cout<<"Enter the Valid number !!!!!!"<<endl;
+  		
+	}
+ 	
+	}while(option!=0);
+	return 0;
+ }
