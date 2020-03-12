@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+
+insertionsort(int mya[])
+{
+	int key=0;
+	int j=0;
+	for(int i=0;i<5;i++)
+	{
+		key=mya[i];  // picking the element 
+		j=i-1;
+		
+	}
+	while(j>=0 && mya[j]>key)
+	{
+		mya[j+1]=mya[j];
+		j=j-1;
+	}
+	mya[j+1]=key;
+}
+
+int main()
+{
+	
+	
+	int arr[5];
+	cout<<"Enetr the five Element in the array :"<<endl;
+	for(int i=0;i<5;i++)
+	{
+		cin>>arr[i];
+		
+	}
+	
+	insertionsort(arr);
+	cout<<"After sorting the array"<<endl;
+	for(int i=0;i<5;i++)
+	{
+		cout<<" ";
+		cout<<arr[i];
+	}
+	return 0;
+}
