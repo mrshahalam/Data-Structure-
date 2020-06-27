@@ -1,0 +1,12 @@
+#include<stdio.h>
+int main()
+{
+
+              int x=9;
+              int *p = &x;
+              printf(" the valoue of x is  : %d ",x);
+              printf("\n the address of x is  : %u ",&x);
+              printf("\n the value of p is  : %d ",p);
+              printf("\n the address of p is  : %u ",&p);
+              printf("\n the value contain by the *p is  : %u ",*p);
+}
