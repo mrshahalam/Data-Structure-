@@ -1,0 +1,28 @@
+#include<stdio.h>
+struct node
+{
+	int data;
+	struct node *next;
+	struct node *prev;
+};
+struct node *head , *tail; 
+int main()
+{
+                // --------------programme to reversed the double linked list---------------------------------
+                // suppose we created the dounle linked list. After that we have to reversed the  list
+                // there is a function to reversed the duble linked list. you can use it in your programme..................
+  
+  
+	struct node  *current , *nextnode ;
+	current=head;
+	while(current!=NULL) 
+	{
+		nextnode =current->next;
+		current->next =current->prev;
+		current->prev=nextnode;
+		current=nextnode;
+	}
+	current=head;
+	head=tail;
+	tail=current;
+}
