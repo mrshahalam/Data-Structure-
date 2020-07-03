@@ -1,0 +1,136 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int stack[100] ;
+int  n , i ,j ,top=-1 ,choice;
+void push();  
+void pop();  
+void show();  
+void main()
+{
+				    printf("\nEnter the number of elements in the stack  \n");   
+				    scanf("%d",&n);  
+				    printf("*********Stack operations using array*********");  
+				  
+				    printf("\n----------------------------------------------\n"); 
+					 while(choice != 4)  
+    {  
+        printf("Chose one from the below options...\n");  
+        printf("\n1.Push\n2.Pop\n3.Show\n4.Peak element\n5.Exit");  
+        printf("\nEnter your choice \n");        
+        scanf("%d",&choice);  
+        switch(choice)  
+        {  
+            case 1:  
+            {   
+                push();  
+                break;  
+            }  
+            case 2:  
+            {  
+                pop();  
+                break;  
+            }  
+            case 3:  
+            {  
+                show();  
+                break;  
+            }  
+             
+            case 4:
+            	{
+            		peak_Element();
+            		break;
+				}
+            case 5:   
+            {  
+                Exit();
+                printf("Exiting....");  
+                break;   
+            } 
+            default:  
+            {  
+                printf("Please Enter valid choice ");  
+            }   
+        };  
+    } 
+}
+ void push()
+ {
+ 	int val;
+ 	if(top==n)
+ 	{
+ 	  printf("stack is Overflow \n");
+	   	
+	}
+	else
+	{
+		printf("Enter the value of element \n");
+		scanf("%d",&val);
+		top=top+1;
+		stack[top]=val;
+		printf("Element is inserted \n");
+		
+	}
+ }
+ void pop()
+ {
+ 	if(top==-1)
+ 	{
+ 	 printf("Stack is underflow \n");
+	  	
+	}
+	else
+	{
+		top=top-1;
+		printf("Element is deleted sucessfully from the top of the stack\n");
+	}
+ }
+ void  show()
+ {
+ 	if(top==-1)
+ 	{
+ 		printf("Stack in Empty\n");
+	 }
+	 else
+	 {
+	 	printf("The element present  in the stack are :\n");
+	 	for(i=top;i>=0;i--)
+	 	{
+	 		printf("%d\n",stack[i]);
+		 }
+	 }
+ }
+void peak_Element()
+ {
+ 	if(top==-1)
+ 	{
+ 		printf("Stack in Empty \n");
+	 }
+ 	printf("The Peak element is : %d",stack[top]);
+ }
+ void Exit()
+  {
+  	printf("Programe is Exit(0)\n");
+  	exit(0);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
