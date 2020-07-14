@@ -1,0 +1,42 @@
+package test;
+import java.util.Scanner;
+/*
+ *        
+*/
+public  class demo {	
+	public static void main(String[] args)   throws Exception
+	{
+		int data[]={2,3,4,5,7,9,23,45,67,89};
+		System.out.print("Which element you wan to perform\n");
+		Scanner sc = new Scanner(System.in);
+		int element = sc.nextInt();
+		int l=0;
+		int r=data.length-1;
+		int middle =(l+r)/2;
+		while(l<=r)
+		{
+			if(data[middle]==element)
+			{
+				System.out.print("You element is found at index no."+middle);
+				break;
+			}
+			else if(data[middle]<element)
+			{
+				l=middle+1;
+				
+			}
+			else
+			{
+				r=middle-1;
+			}
+			middle = (l+r)/2;
+			
+		}
+		if(l>r)
+		{
+			System.out.print("Element is not found in the list \n");
+		}	
+	}
+}
+	
+           
