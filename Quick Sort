@@ -1,0 +1,74 @@
+package test;
+import java.util.Scanner;
+/*
+ *      Quick Sort   
+*/
+ class QuickMiddle
+ {
+	 
+ }
+public  class demo {	
+	
+	public static void main(String[] args)   throws Exception
+	{
+		int arr[] = {3,56,34,23,8,5,1,9,46,18,54};
+		int len = arr.length;
+		
+		 demo obj = new demo();
+		 obj.QuickSortRecurssion(arr, 0, len-1);
+		 obj.printArray(arr);
+		
+		
+	}
+	
+	int partition(int arr[] ,int low , int high)
+	{
+		int pivote =arr[(low+high)/2];
+		
+		while(low<=high)
+		{
+			while(arr[low]<pivote)
+			{
+				low++;
+			}
+			while(arr[high]>pivote)
+			{
+				high--;
+			}
+			if(low<=high)
+			{
+				int temp =arr[low];
+				arr[low] = arr[high];
+				arr[high]= temp;
+				
+				low++;
+				high--;	
+			}
+			
+		}
+		return low;
+	}              // main method close here ------------------------
+	void QuickSortRecurssion(int arr[] , int low , int high)
+	{
+		int  result = partition(arr , low , high);
+		
+		if(low<result-1)
+		{
+			QuickSortRecurssion(arr , low , result-1);
+		}
+		if(result<high)
+		{
+			QuickSortRecurssion(arr , result , high);
+		}
+		
+	}
+	void printArray(int[] array)
+	{
+		for(int i :array)
+		{
+			System.out.print(" "+i);
+		}
+	}
+}
+	
+           
