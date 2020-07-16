@@ -1,0 +1,80 @@
+package test;
+import java.util.Scanner;
+/*
+ *      Merge Sort   
+*/
+
+public  class demo {	
+	
+	int[] array;
+	int[] tempMergeArr;
+	int length;
+	
+	public static void main(String[] args)   throws Exception
+	{
+		int inputArr[] = {3,56,34,23,8,5,1,9,46,18,54};
+		demo ms = new demo();
+		ms.sort(inputArr);
+		
+		for(int i : inputArr)
+		{
+			System.out.print(i+" ");
+		}
+	}
+	public void sort(int inputArr[])
+	{
+		this.array=inputArr;
+		this.length=inputArr.length;
+		this.tempMergeArr=new int[length];
+		divideArray(0,length-1);
+		
+	}
+	    public void divideArray(int lowerindex ,int higherindex)
+	    {
+	    	if(lowerindex<higherindex)
+	    	{
+	    		int middle =lowerindex +(higherindex-lowerindex)/2;
+	    		
+	    		// it will sort the left side of the  array
+	    		divideArray(lowerindex , middle);
+	    		
+	    		// it will sort the right side of the array 
+	    		divideArray(middle+1 , higherindex);
+	    		
+	    		mergeArray( lowerindex ,  middle ,  higherindex);
+	    	}
+	    }
+	    
+	    public void mergeArray(int lowerindex , int middle , int higherindex)
+	    {
+	    	for(int i=lowerindex ; i<=higherindex ;i++)
+	    	{
+	    		tempMergeArr[i]=array[i];
+	    	}
+	    	int i =lowerindex; 
+	    	int j= middle+1;
+	    	int k=lowerindex;
+	    	while(i<=middle && j<=higherindex)
+	    	{
+	    		if(tempMergeArr[i]<=tempMergeArr[j])
+	    		{
+	    			array[k]=tempMergeArr[i];
+	    			i++;
+	    		}
+	    		else
+	    		{
+	    			array[k]= tempMergeArr[j];
+	    			j++;
+	    		}
+	    		k++;
+	    	}
+	    	while(i<=middle)
+	    	{
+	    		array[k]=tempMergeArr[i];
+	    		k++;
+	    		i++;
+	    	}
+	    }
+}
+	
+           
