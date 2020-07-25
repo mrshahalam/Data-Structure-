@@ -1,0 +1,22 @@
+public static  Node intersect(Node lista , Node slistb)
+	 {
+		if(lista == null && slistb ==null)
+			return null;
+		Node tempA =lista;
+		
+		while(tempA!=null)
+		{
+			Node tempB= slistb;
+			while(tempB!=null)
+			{
+				if(tempA==tempB)
+				{
+					return tempA;
+				}
+				tempB=tempB.next;
+			}
+			tempA=tempA.next;
+		}
+		return null;
+		
+	 }
