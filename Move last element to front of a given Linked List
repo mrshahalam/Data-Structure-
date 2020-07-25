@@ -1,0 +1,69 @@
+package test;
+
+class demo
+{
+	Node head;
+	
+	 class Node
+	{
+		int data;
+		Node next;
+		Node(int d)
+		{
+			data=d;
+			next=null;
+		}
+		
+	}
+	 public void push(int a)
+	 {
+		 Node first = new Node(a);
+		 
+		 first.next=head;
+		 head=first;
+	 }
+	 void move()
+	 {
+		 if(head==null && head.next==null)
+			 return;
+		 Node last=head;
+		 Node second_last =null;
+		 
+		 while(last.next!=null)
+		 {
+			 second_last=last;
+			 last=last.next;
+		 }
+		 
+		 second_last.next=null;
+		 last.next=head;
+		 head=last;
+	 }
+	        
+	 public void print()
+	 {
+		 Node p = head;
+		 while(p!=null)
+		 {
+			 System.out.print(p.data+" ");
+			 p=p.next;
+		 }
+	 }
+	public static void main(String args[])
+	{
+		demo list = new demo();
+		list.push(23);
+		list.push(25);
+		list.push(12);
+		list.push(49);
+		list.push(22);
+		list.push(16);
+		
+		System.out.println("Linked List :");
+		list.print();
+		System.out.println("\nLinked List After the Operation :");
+		list.move();
+		list.print();
+	}
+	
+}
