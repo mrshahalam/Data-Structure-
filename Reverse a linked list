@@ -1,0 +1,86 @@
+package test;
+
+import java.util.HashSet;
+import java.util.Set;
+
+class demo { 
+	  
+    static Node head; 
+  
+    static class Node { 
+  
+        int data; 
+        Node next; 
+  
+        Node(int d) 
+        { 
+            data = d; 
+            next = null; 
+        } 
+    } 
+  
+    /* Function to reverse the linked list */
+    Node reverse(Node node) 
+    { 
+        Node prev = null; 
+        Node current = node; 
+        Node next = null; 
+        while (current != null) { 
+            next = current.next; 
+            current.next = prev; 
+            prev = current; 
+            current = next; 
+        } 
+        node = prev; 
+        return node; 
+    } 
+    public void push(int new_data) 
+    { 
+        /* 1 & 2: Allocate the Node & 
+                  Put in the data*/
+        Node new_node = new Node(new_data); 
+   
+        /* 3. Make next of new Node as head */
+        new_node.next = head; 
+   
+        /* 4. Move the head to point to new Node */
+        head = new_node; 
+    } 
+    void printList() 
+    { 
+        Node temp = head; 
+        while (temp != null) 
+        { 
+           System.out.print(temp.data+" "); 
+           temp = temp.next; 
+        }   
+        System.out.println(); 
+    } 
+    
+    
+	public static void main(String args[])
+	{
+	
+		 demo llist = new demo(); 
+	        llist.push(20); 
+	        llist.push(19); 
+	        llist.push(13); 
+	        llist.push(11); 
+	         
+	        
+	        System.out.print("Before Operation \n");
+	        llist.printList();
+	        System.out.print("After Operation \n");
+	        
+	        head = llist.reverse(head); 
+	        llist.printList();
+	}
+	     
+	}
+		
+		
+			
+		
+		
+		
+	
