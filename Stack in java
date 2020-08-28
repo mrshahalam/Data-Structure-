@@ -1,0 +1,57 @@
+package com.codewithshah;
+public class fifth {
+    static  final int max = 3;
+    int[] arr = new int[max];
+    int top = -1;
+    
+    boolean isEmpty()
+    {
+       if (top<=0)
+           return false;
+       return true;
+    }
+    int push(int x)
+    {
+        if (top>=(max-1))
+        {
+            System.out.print("Stack is full\n");
+            return 0;
+        }
+        else {
+            arr[++top] = x;
+            System.out.print(x+" is pushed into the stack\n");
+            return x;
+        }
+
+    }
+    int  pop()
+    {
+        if (top < 0) {
+            System.out.println("Stack Underflow");
+            return 0;
+        }
+        else {
+            int x = arr[top--];
+            return x;
+        }
+    }
+    int peek()
+    {
+        if (top<0)
+            System.out.print("Stack is Underflow");
+        int v = arr[top];
+        return v;
+    }
+
+    public static void main(String[] args)
+     {
+     fifth  s = new fifth();
+     s.push(3);
+     s.push(4);
+     s.push(67);
+     s.push(56);
+     s.isEmpty();
+     System.out.print( s.peek()+" is the peek element \n");
+     System.out.print(s.pop()+" Popout from stack");
+     }
+}
