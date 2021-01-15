@@ -1,0 +1,77 @@
+public class list{
+    Node head;
+    class Node
+    {
+        int data;
+         Node next;
+         
+         Node(int d)
+         {
+             data = d;
+             next = null;
+         }
+         
+    }
+    public void push(int d)
+    {
+        Node new_node = new Node(d);
+        new_node.next = head;
+        head = new_node;
+    }
+    public void delete(int key)
+    {
+        Node temp=head,prev=null;
+        if(head ==null)
+        {
+            System.out.print("Their is no element for deletion");
+        }
+        
+        if(temp!=null && temp.data==key)
+        {
+            head= head.next;
+            return;
+        }
+        
+        while(temp!=null && temp.data!=key)
+        {
+            prev = temp;
+            temp = temp.next;
+        }
+        if(temp==null)
+        {
+            System.out.print("No such element is fouond");
+            return;
+        }
+        prev.next = temp.next;
+        
+    }
+    public void print()
+    {
+        Node temp = head;
+        while(temp!=null)
+        {
+            System.out.print(" "+temp.data);
+            temp = temp.next;
+        }
+    }
+
+     public static void main(String []args){
+        System.out.println("Before Deleting \n");
+        list l = new list();
+        l.push(4);
+        l.push(464);
+        l.push(464);
+        l.push(7684);
+        l.push(2354);
+        l.push(7894);
+        l.push(77);
+        l.print();
+        System.out.println("\nAfter Deleting \n");
+        l.delete(77);
+        l.delete(464);
+        l.delete(7684);
+        l.delete(7894);
+        l.print();
+        
+     }
+}
