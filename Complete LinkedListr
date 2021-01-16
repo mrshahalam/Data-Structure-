@@ -1,0 +1,220 @@
+import java.util.HashSet;
+import java.util.Set;
+
+class fourth {
+    static Node head;
+    class Node
+    {
+        int data;
+        Node next;
+        Node(int d)
+        {
+            data = d;
+            next = null;
+        }
+    }
+    // insert the element
+    public void push(int d)
+    {
+        Node new_node = new Node(d);
+        new_node.next = head;
+        head = new_node;
+    }
+    // print the element
+    public void print()
+    {
+        Node temp = head;
+        while(temp!=null)
+        {
+            System.out.print(" "+temp.data);
+            temp = temp.next;
+        }
+    }
+    // search an element by non-recursive method
+    public boolean  s2(int key)
+    {
+        Node temp = head;
+        while(temp!=null)
+        {
+            if(temp.data ==key)
+            {
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+    // search an element in the list
+    public boolean search(Node head ,int key)
+    {
+        if(head==null)
+        {
+            return false;
+        }
+        if(head.data == key)
+        {
+            return true;
+        }
+        return search(head.next , key);
+    }//find index of an element
+    public int index(int key)
+    {
+        Node temp = head;
+        int count =0;
+        while(temp!=null)
+        {
+            if(count==key)
+            {
+                return temp.data;
+            }
+            count++;
+            temp = temp.next;
+        }
+        return -1;
+    }
+    // find the middle  of the linkedlilst
+    public void middle()
+    {
+        Node fast =  head;
+        Node slow = head;
+        if(head!=null)
+        {
+            while(fast!=null && fast.next!=null)
+            {
+                fast = fast.next.next;
+                slow  = slow.next;
+            }
+            System.out.print("\nthe middle element of the linkedlist is : "+slow.data);
+        }
+
+    }
+    //cout the occurance of an element in the linkedlist
+    public int occurance(int x)
+    {
+        Node temp = head;
+        int count =0;
+        while(temp!=null)
+        {
+            if(temp.data==x)
+            {
+                count++;
+            }
+            temp=temp.next;
+        }
+        return count;
+    }
+    //  Detect the cycle in the linkedlist
+    public  boolean cycle()
+    {
+        Node temp= head;
+        HashSet<Node> h = new HashSet<Node>();
+        while (temp!=null)
+        {
+            if(h.contains(temp))
+            {
+                return true;
+            }
+            h.add(temp);
+            temp = temp.next;
+        }
+        return  false;
+    }
+    // find  dublicate
+    public void dublicate()
+    {
+        Node  temp = head;
+        while (temp!=null && temp.next!=null)
+        {
+            if(temp.data==temp.next.data)
+            {
+                System.out.print("\nthe dublicate is :"+temp.data);
+                break;
+            }
+            else
+            {
+                temp=temp.next;
+            }
+        }
+    }
+    //Swap the Node
+    public void swap()
+    {
+        Node temp = head;
+
+        while(temp!=null && temp.next!=null)
+        {
+            int k = temp.data;
+            temp.data = temp.next.data;
+            temp.next.data = k;
+
+            temp = temp.next.next;
+        }
+    }
+    //rotate the linkedlist
+    public void rotate()
+    {
+
+        if (head==null && head.next==null)
+        {
+            return;
+        }
+        Node last =head;
+        Node sec_last = null;
+        while (last.next!=null){
+            sec_last=last;
+            last=last.next;
+        }
+        sec_last.next=null;
+        last.next=head;
+        head=last;
+    }
+    // reverse the LinkedList
+    public  Node reverse(Node head)
+    {
+        Node pre = null;
+        Node current = head;
+        Node next = null;
+        while (current!=null)
+        {
+            next = current.next;
+            current.next = pre;
+            pre = current;
+            current = next;
+        }
+        head = pre;
+        return head;
+    }
+
+    // main function
+    public  static void  main(String[] args)
+    {
+        fourth l = new fourth();
+        l.push(6);
+        l.push(645);
+        l.push(6);
+        l.push(876);
+        l.push(6);
+        l.print();
+
+        System.out.println("\n"+l.s2(645));
+
+        System.out.println("\n"+l.search(l.head,645));
+
+        System.out.print("find index element  : "+l.index(2));
+        l.middle();
+       System.out.print("\nthe occurance of the element is : "+l.occurance(645));
+       System.out.print("\nList containing the cycle : "+l.cycle());
+       l.dublicate();
+       System.out.print("After swapping \n");
+       l.swap();
+       l.print();
+       l.rotate();
+       System.out.print("\nAfter rotatation  \n");
+       l.print();
+        head = l.reverse(head);
+        System.out.println("");
+        System.out.println("Reversed linked list ");
+        l.print();
+
+    }
+ }
